@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Consultoria em Segurança da Informação </title>
+</head>
+
+<body>
+    <header>
+        <%- include('/home/node/app/views/cabecalho.ejs') %>
+    </header>
+    <h1>Login Administradores</h1>
+    <section>
+        <% if (messages.error) { %>
+            <div class="alert alert-danger">
+                <%= messages.error %>
+            </div>
+        <% } %>
+        <% if (messages.success) { %>
+            <div class="alert alert-success">
+                <%= messages.success %>
+            </div>
+        <% } %>
+        <form action="/admin/login" method="post">
+            <div class="form-group">
+                <label for="nome">Nome de usuário</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+    </section>
+
+    <h1>Login Usuarios</h1>
+    <section>
+        <% if (messages.error) { %>
+            <div class="alert alert-danger">
+                <%= messages.error %>
+            </div>
+        <% } %>
+        <% if (messages.success) { %>
+            <div class="alert alert-success">
+                <%= messages.success %>
+            </div>
+        <% } %>
+        <form action="/usuario/login" method="post">
+            <div class="form-group">
+                <label for="nome">Nome de usuário</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+    </section>
+
+    <Footer class="texto3">
+        Desenvolvido Por <a href="autor">George Paulo</a>
+    </Footer>
+
+</body>
+
+</html>

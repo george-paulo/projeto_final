@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  node:
+    build: .
+    env_file: .env
+    ports:
+      - "124:3000"
+    volumes:
+      - ./app:/home/node/app
+      - /home/node/app/node_modules
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    volumes:
+      - dados_mongo:/data/db
+volumes:
+  dados_mongo:
+  node_modules:

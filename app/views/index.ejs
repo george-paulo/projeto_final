@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria em Segurança Cibernética</title>
+    <link rel="stylesheet" href="/_css/customizacao.css">
+</head>
+<body>
+    <header>
+        <%- include('/home/node/app/views/cabecalho.ejs') %>
+    </header>
+    <section class="exibicao">
+        <h1 class="texto1">Consultoria em Segurança Cibernética, Seu Negócio Mais Seguro.</h1>
+        <p class="texto2">
+            Com o conhecimento necessário os nossos especialistas em cibersegurança conseguem detectar recursos
+            inseguros e atividades maliciosas em rede e infraestruturas. Através da implementação de avaliações
+            personalizadas de segurança de apps para riscos de atividade baseados em consumidores,
+            bem como conformidade de políticas corporativas, dentre outras funções a que mais se destaca é a
+            avaliação de vulnerabilidades.
+        </p>
+        <div>
+            <a class="comece_exp" href="/servico">COMECE SUA EXPERIÊNCIA</a>
+            <img class="img_figura" src="/_img/microsoft_certificacao.png" alt="Certificação Microsoft">
+            <img class="img_figura" src="/_img/comptia.png" alt="Cetificação Comptia+">
+            <img class="img_figura" src="/_img/exin.jpg" alt="Certificação EXIN">
+            <img class="img_experiencia" src="/_img/seguranca.jpg" alt="Imagem Simbolizando Segurança">
+        </div>
+    </section>
+    <section class="exibicao">
+        <% consultorias.forEach(consultoria => { %>
+            <article>
+                <p class="texto2">
+                    <%= consultoria.texto %>
+                </p>
+            </article>
+        <% }); %>
+    </section>
+
+        </div>
+        <button onclick="passarPagina()">Proxima</button>
+        <script>
+            let servico = 0;
+            async function passarPagina() {
+                let resposta = await fetch('servico/' + servico++);
+                let proximaPagina = await resposta.text();
+                let divservicotiseg = document.querySelector('#servicotiseg');  
+                divservicotiseg.innerHTML=proximaPagina;
+            }
+        </script>
+
+    <Footer class="texto3">
+        Desenvolvido Por <a href="autor">George Paulo</a>
+    </Footer>
+</body>
+
+</html>

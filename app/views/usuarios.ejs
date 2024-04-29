@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Consutoria em Segurança Cibernética</title>
+
+</head>
+
+<body>
+    <header>
+        <%- include('/home/node/app/views/cabecalho.ejs') %>
+    </header>
+
+    <section id="resposta">
+        <form action="/usuarios/create" method="post">
+            <h2>Cadastro de Usuarios</h2><br>
+            <input name="id" type="hidden" value="0">
+            <label for="nome">Nome</label><br>
+            <input type="text" id="nome" name="nome"><br>
+            <label for="senha">Senha</label><br>
+            <input type="password" id="senha" name="senha"><br>
+            <input type="submit" value="Cadastrar" class="button button2">
+        </form>
+    </section>
+    <button>Listar</button>
+    <section id="descricao_seginfo">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="usuarios">
+                <% admins.forEach((admin)=> { %>
+                    <tr>
+                        <td>
+                            <%= admin.id %>
+                        </td>
+                        <td>
+                            <%= admin.nome %>
+                        </td>
+                        <td>
+                            <form action="/usuarios/<%= admin._id %>" method="post">
+                                <input type="hidden" name="_method" value="PUT">
+                                <label for="nome">Nome</label><br>
+                                <input type="text" id="nome" name="nome" value="<%= admin.nome %>"><br>
+                                <label for="senha">Senha</label><br>
+                                <input type="password" id="senha" name="senha"><br>
+                                <input type="submit" value="Atualizar">
+                            </form>
+                            <form action="/usuarios/<%= admin._id %>" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="submit" value="Excluir">
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+    </section>
+    <footer id="footer">
+        <p id="descricao_seginfo"> Desenvolvido por </p1><a href="autor">George</a>
+    </footer>
+</body>
+
+</html>
